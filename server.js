@@ -1,4 +1,5 @@
 // c07e937aa2cea1e3d4a6b935a8fe0f84
+var result='';
 $("form").submit(function (e) {
     e.preventDefault();
 
@@ -15,6 +16,15 @@ console.log(url);
 
 $.get(url,function(data){
     console.log(data);
+    data.organic_results.forEach(res=>{
+        result=`<h1>${res.title}</h1>
+        <p>${res.snippet}</p>
+        <a href="${res.url}">${res.url}</a>`;
+
+
+        $('#organic-results').append(result);
+
+    })
 })
 
 
